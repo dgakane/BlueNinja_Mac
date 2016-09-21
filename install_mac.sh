@@ -1,6 +1,6 @@
 #!/bin/bash
 
-export TZ1_BASE=$(echo $HOME)/Cerevo/CDP-TZ01B/
+export TZ1_BASE=$HOME/Cerevo/CDP-TZ01B/
 export INSTALL_FILES=install_files/
 
 GCC_ARM_NONE_EABI_URL=https://launchpad.net/gcc-arm-embedded/4.9/4.9-2015-q3-update/+download/gcc-arm-none-eabi-4_9-2015q3-20150921-mac.tar.bz2

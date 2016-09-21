@@ -1,5 +1,7 @@
 #!/bin/bash
 
+export LANG=C
+
 if [ $# -eq 0 ]; then
     echo "usage: $0 APPNAME"
     exit

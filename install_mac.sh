@@ -58,7 +58,7 @@ fi
 
 if [ ! -e ${GCC_ARM_NONE_EABI} ]; then
     echo "Download gcc-arm-none-eabi"
-    wget ${CC_ARM_NONE_EABI_URL}
+    wget ${GCC_ARM_NONE_EABI_URL}
 fi
 tar -jxf ${GCC_ARM_NONE_EABI} -C ${TZ1_BASE}tools --strip=1
 

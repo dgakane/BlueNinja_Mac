@@ -20,7 +20,7 @@ echo "Applying for patchs."
 for f in $(find ${INSTALL_FILES} -name "TOSHIBA.TZ10xx_DFP*.patch"); do
     if [ -e ${TZ1_BASE}sdk/$( basename ${f} | sed -e "s/.patch$//") ]; then
         echo ${f}
-        cat ${f} | sed -e '1,2 s:\\:\/:g' >${f}.tmp
+        cat ${f} | sed -e '/---/ s:\\:\/:g' | sed -e '/+++/ s:\\:\/:g' >${f}.tmp
         patch -p0 -d ${TZ1_BASE}sdk < ${f}.tmp
         rm ${f}.tmp
     fi

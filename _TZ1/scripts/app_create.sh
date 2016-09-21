@@ -47,8 +47,9 @@ cp  ${SDK_DIR}TOSHIBA.TZ10xx_DFP.${DFP_VER}/Boards/TOSHIBA/RBTZ1000/Template/RTE
 echo "Converting DOS files into Unix format..."
 find $1 -type f -exec dos2unix -q {} \; # CRLFでpatchがエラーになる対策
 cd $1
-cat ${TZ1_BASE}sdk/${DFP_VER}.patch | LANG=C sed -e 's:\\:\/:g' >${TZ1_BASE}sdk/${DFP_VER}.patch.tmp
+cat ${TZ1_BASE}sdk/${DFP_VER}.patch | sed -e '/---/ s:\\:\/:g' | sed -e '/+++/ s:\\:\/:g' >${TZ1_BASE}sdk/${DFP_VER}.patch.tmp
 patch -p0 < ${TZ1_BASE}sdk/${DFP_VER}.patch.tmp
+rm ${TZ1_BASE}sdk/${DFP_VER}.patch.tmp
 
 cat Makefile | sed -e "s/^TARGET.*$/TARGET=$1/" | sed -e "s/^DFP_VER.*$/DFP_VER=${DFP_VER}/" > Makefile.new
 mv Makefile.new Makefile
